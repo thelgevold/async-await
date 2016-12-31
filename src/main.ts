@@ -2,8 +2,8 @@ import { PersonService } from './person-service';
 
 let personService = new PersonService();
 
-//personService.getPersonFullNameUsingAsync();
+personService.getPersonFullNameUsingAsync();
 
-//personService.getPersonFullNameUsingThen();
+personService.getPersonFullNameUsingThen();
              
 personService.getPersonFullNameWithTryCatch();             

@@ -55,23 +55,25 @@ var PersonService = (function () {
     };
     PersonService.prototype.getPersonFullNameWithTryCatch = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var response, e_1;
+            var response, person, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
+                        _a.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, fetch('./data/person2.json')];
                     case 1:
                         response = _a.sent();
-                        //let person = await response.json();
-                        console.log('aaa');
-                        return [3 /*break*/, 3];
+                        return [4 /*yield*/, response.json()];
                     case 2:
+                        person = _a.sent();
+                        console.log(person.firstName + " " + person.lastName);
+                        return [3 /*break*/, 4];
+                    case 3:
                         e_1 = _a.sent();
                         console.log('there was an error');
                         console.log(e_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
