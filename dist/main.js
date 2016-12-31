@@ -1,5 +1,6 @@
 import { PersonService } from './person-service';
 var personService = new PersonService();
-personService.getPersonFullName();
-personService.getPersonFullNameAsPromise();
+//personService.getPersonFullNameUsingAsync();
+//personService.getPersonFullNameUsingThen();
+personService.getPersonFullNameWithTryCatch();
 //# sourceMappingURL=main.js.map

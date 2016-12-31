@@ -39,7 +39,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var PersonService = (function () {
     function PersonService() {
     }
-    PersonService.prototype.getPersonFullName = function () {
+    PersonService.prototype.getPersonFullNameUsingAsync = function () {
         return __awaiter(this, void 0, void 0, function () {
             var response, person;
             return __generator(this, function (_a) {
@@ -56,22 +56,50 @@ var PersonService = (function () {
             });
         });
     };
-    PersonService.prototype.getPersonFullNameAsPromise = function () {
-        return fetch('./data/person.json')
+    PersonService.prototype.getPersonFullNameWithTryCatch = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var response, e_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, fetch('./data/person2.json')];
+                    case 1:
+                        response = _a.sent();
+                        //let person = await response.json();
+                        console.log('aaa');
+                        return [3 /*break*/, 3];
+                    case 2:
+                        e_1 = _a.sent();
+                        console.log('there was an error');
+                        console.log(e_1);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    PersonService.prototype.getPersonFullNameUsingThen = function () {
+        return fetch('./data/person2.json')
             .then(function (response) {
-            var a = response.json();
-            console.log(a);
-            return a;
+            return response.json();
         })
             .then(function (person) {
             console.log(person.firstName + " " + person.lastName);
+        })
+            .catch(function (e) {
+            console.log('error');
+        })
+            .then(function () {
+            console.log('finally');
         });
     };
     return PersonService;
 }());
 
 var personService = new PersonService();
-personService.getPersonFullName();
-personService.getPersonFullNameAsPromise();
+//personService.getPersonFullNameUsingAsync();
+//personService.getPersonFullNameUsingThen();
+personService.getPersonFullNameWithTryCatch();
 
 }());
